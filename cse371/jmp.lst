@@ -1,0 +1,36 @@
+
+
+
+
+
+
+              2500 A.D. 8085 CROSS ASSEMBLER   -   VERSION 3.01a
+              --------------------------------------------------
+
+                       INPUT  FILENAME :  JMP.ASM
+                       OUTPUT FILENAME :  JMP.OBJ
+
+
+
+    1                         	; JMP simple program for CSE371 Lab #3
+    2                         	; Derron Simon and Sam Alcoff
+    3   
+    4   0000                  		org 0000h
+    5   0000   C3 00 00       		jmp 0000h
+    6   0003                  		end
+                                                                                                                          PAGE 2
+
+
+
+
+
+*************  S Y M B O L I C   R E F E R E N C E   T A B L E  *************
+
+
+
+
+
+
+         LINES ASSEMBLED :     6             ASSEMBLY ERRORS :    0   
+
+

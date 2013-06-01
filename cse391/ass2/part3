@@ -1,0 +1,31 @@
+CSE 391 Assignment #2 Part 3
+Derron Simon (205-56-0093)
+dsimon@eniac.seas.upenn.edu
+
+3A - Depth limiting can imitate iterative deepening if the maximum
+depth changes as the algorithm exhausts all the alternatives at the
+current depth.  Depth-first search benefits most from this, because it
+guarantees a solution and guarantees that solution is the shortest
+path, like breadth-first.  In fact, it is very similar to
+breadth-first in overall method.  If we disallow duplicates, we find
+that breadth-first performs better than if we don't.  The problem with
+breadth-first is that it will have no problem testing out the state it
+just came from.  This can be avoided if we specify no duplicates.
+
+3B - The limits to search algorithms are often the same limits to all
+algorithms, time and space.  Time is important in that we can put a
+maximum time exploring one possibility (or leaf), just as humans do.
+Space is important, because we must always be certain to solve the
+search in an optimal path.  Otherwise our search space can grow to be
+huge! One algorithm would be breadth-first-best-first.  I like this
+because it would use the breadth-first algorithm to get all
+neighboring nodes, and then put them at the front of *open* in the
+best first order.  This would allow the algorithm to make the
+equivalent of logically-backward leaps (like the missionary, wolf,
+sheep and lettuce problem, or whatever... :-).
+
+3C - The randomize puzzle guarantees a solution of less than or equal
+to 10 steps.  If we randomly generated a start and goal, we would be
+unsure of how long a path is required.  Since we know that 10 is
+sufficient we can make a valid *depth-limit* variable.  The search
+space is 7^10, which is still very large.

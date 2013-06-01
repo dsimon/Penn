@@ -1,0 +1,28 @@
+NAME comb;
+DEVICE p22v10;
+
+/* Inputs */
+
+PIN 1 = CLK;
+PIN 2 = !UDS;
+PIN 3 = !LDS;
+PIN 4 = RW;
+PIN 5 = !TB;
+PIN 6 = !RB;
+
+/* Outputs */
+
+PIN 14 = !LBRD;
+PIN 15 = !UBRD;
+PIN 16 = !LBWR;
+PIN 17 = !UBWR;
+PIN 18 = !G;
+
+/* combinations */
+
+LBRD = LDS & RW;
+UBRD = UDS & RW;
+LBWR = LDS & !RW;
+UBWR = UDS & !RW;
+
+G = TB # RB;

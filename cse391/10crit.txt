@@ -1,0 +1,83 @@
+------------------------------------------------------------------------------
+Review of Russell and Norvig text                    Instructor: Bonnie Webber
+
+Chapter 8
+Student: Derron Simon
+
+
+
+--------------------- TYPOS, GRAMMATICAL ERRORS, ETC. ------------------------
+
+p.1,para.2
+
+> come in several flavours
+
+	Same as always, British spelling!
+
+p.5, para.-3
+
+> We have sen that the declarative approach
+
+	"We have seen that"
+
+p.9, para.-3
+
+> extending the basic Prolog model in different the.
+
+	This makes no sense!!  What did you mean?? :-)
+
+All over
+
+> behaviour
+
+	British spelling of behavior.
+
+p.19, para.-1
+
+> One problem with this approach is that it is easy to carried away
+
+	perhaps "to get carried away"
+
+p.19, para.1
+
+> Perhaps Dog and Chien are two nodes
+
+	Do you mean "chicken" or is Chien the name of some breed?
+
+
+
+-------------- VISUAL LAYOUT, STYLE OF PARTICULAR PHRASES, ETC. --------------
+
+p.1, para.-2
+
+> that these nodes are organized in a taxonomic structure, and that
+> binary relations joing those nodes.
+
+	replace "those nodes" with "these nodes" or "the nodes"
+
+p.7, para.-4
+
+> Prolog inferences unsound, but actual errors happen very seldom,
+
+	seldom is either an adverb (not often, infrequently) or
+	an adjective (infrequent, rare).  The American Heritage
+	Electronic Dictionary says the adjective form is "archaic."
+
+p.13, para.1
+
+> The SAM (...) program was the first, proving a lemma in lattice
+> theory
+
+	Was this a new lemma, a tough one to solve, or what?  I'd be
+	interested in a little more detail (the history, as it were).
+
+p.17, footnote
+
+> Nixon was a Quaker (and hence a pacifist)
+
+	Is this true?  I went to a Quaker school for 13 years and
+	never heard that Nixon was a Quaker!  I'd check this out, 
+	because they were pretty proud of all the historical Quakers,
+	and they would have mentioned that (unless Nixon is not
+	someone to be proud of ;-).
+

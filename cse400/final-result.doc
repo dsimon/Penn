@@ -1,0 +1,82 @@
+Problems we had acquiring parts
+
+Originally we wanted to use the Motorola 68360 because of it's onboard
+ethernet support as well as dual channel serial support and built-in
+debugger.  We got the number of Motorola university support and called
+them.  The Motorola rep., Fritz Wilson, said to photocopy our Penn
+IDs and write a note explaining our request.  We waited most of the
+Fall semester and it never came.  
+
+We then changed our design to use a more common ethernet device, the
+AMD 7990 (LANCE) with a 68000 running at 8 MHz.  The AMD literature
+said an 8MHz 68000 would be capable of supporting ethernet throughput.
+We scavenged the LANCE from an old Sun 3/50 motherboard, but were
+unable to find the necessary support chips - the ethernet transceiver
+(7996) and serial interface adapter (7992B).  We talked to DCCS in
+regards to obtaining the chips.  They were unresponsive.  We then
+spoke with Brendan Traw and Hans Kuhlmann who said we could probably 
+order the chips through the DSL's AMD grant.  We sent the necessary
+paperwork to Norman Badler.  We waited 4 weeks with no reply.  We then
+called AMD and tried to order the parts individually.  We were told
+they would not sell in quantities of less than 20 each.  We called
+DigiKey and Active as well as several other local electronic parts
+distributors and were unable to find a distributor who could obtain
+these chips within 4 weeks.  We decided to go forward with our design
+and hope the 7992B and 7996 would arrive through the AMD grant.
+
+At the end of the Fall semester we ordered through the DSL several
+68681 DUARTs for use in our project.  We decided on the 68681 because
+it has 2 serial channels and a 4 byte receive buffer.  Instead of the
+68681 - the chips we asked for - we received Motorola 2681s.  The 2681
+is a more generalized version of the same chip, not designed
+specifically to interface with the 68000.  Fortunately the data books
+we had on the 68681 also covered the 2681.
+
+Design problems
+
+The AMD _Ethernet IEEE 802.3 Family_ data book describes an interface
+between the 68000 and the LANCE.  We decided to use this design as
+the basis for our project.  The LANCE uses a multiplexed bus and the
+bus request signals are very different from those of the 68000.  The
+AMD interface design used an AMD PAL and several AMD bus transceiver
+and buffer chips.  In order to use standard TTL chips with this design
+we needed to simulate the more complex AMD chips with several 74LS
+series buffers and additional support logic.  The PAL code was written
+in an unfamiliar "PLD language" which we needed to convert to the more
+familiar CUPL language.
+
+The multiplexed bus and DMA logic made the project very hard to debug
+in the initial stages.  Once we had almost the entire system built we
+could start testing.  The HP 16500B Logic Analysys System was
+invaluable in debugging the system.  After a week on sorting through
+problems with the bus transceivers and LANCE PAL interface we finally
+had a working basic system.
+
+What works
+
+The basic 68000 system works.  We've tested the DMA logic and the
+interrupt logic.  We took advantage of the 68000's asynchronous bus
+and matched different wait states to the speeds of the chips we used.
+For example, the 100 ns RAMs operate at full speed, and the 200ns
+ROMs wait an extra clock cycle on reads.  The output ports of the 2681
+are working and provide a basic debugging output.  Both serial
+channels of the 2681 work at high baud rates (we've tested at 9600
+bps).
+
+We modified our 8085 minimal system to act as a simple EEPROM programmer
+for use with the AM2864BE EEPROM.  It will download SREC format files
+and program the EEPROM in byte mode - which is slower than page mode, 
+but better than nothing!  This way we can do chip programming outside
+of the DSL.
+
+[insert C Compiler stuff here]
+
+What we learned
+
+We both learned that although fiddling with hardware is interesting
+and pretty rewarding, we're not really cut out for it.  Some of the
+design involved dealing with some EE issues beyond either of our
+experience.  
+
+
+

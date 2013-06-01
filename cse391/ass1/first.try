@@ -1,0 +1,12 @@
+(defun table-driven-agent (name)
+  (make-agent
+   :name name
+   :program
+   (let ((moves-since-start 0))
+     #'(lambda (percept)
+	 (let ((dirt (second percept)))
+	      (cond (dirt 'suck)
+		    ((= moves-since-start 4) 'shut-off)
+		    (t (incf moves-since-start) '(forward (turn left) ))))))))
+
+

@@ -1,0 +1,19 @@
+include ddl
+
+begin
+  store "data"
+  find first DORM within ALL_DORMS
+  while ( db_status = 0 ) do
+    get DORM
+    if ( DORM.SINK = true ) then
+      find first PERSON within HAS_RESIDENT
+      while ( db_status = 0 ) do
+        get PERSON
+        write( PERSON.NAME, PERSON.MAJOR )
+	find next PERSON within HAS_RESIDENT
+        endwhile
+      endif
+    find next DORM within ALL_DORMS
+    endwhile
+end
+

@@ -1,0 +1,11 @@
+Informed Search Methods
+-----------------------
+
+Typos:
+
+p64 - Title of paragraph 4 - behaviour (British spelling)
+p64 - paragraph 5 - straightforwrd 
+p65 - 1st line - focussed
+p65 - 2nd from bottom - it must eventually expand reach a goal state
+p66 - 8 from bottom - uness
+

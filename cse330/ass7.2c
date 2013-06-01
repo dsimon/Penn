@@ -1,0 +1,25 @@
+include ddl
+
+begin
+  store "data"
+  DORM.ROOM := 107
+  find any DORM using ROOM
+  while ( db_status = 0 ) do	
+    find first PERSON within HAS_RESIDENT
+    while ( db_status = 0 ) do
+      find first BEER within DRUNK_BY
+        while ( db_status = 0 ) do
+          find first BEER within SERVED_IN
+            while ( db_status = 0 ) do
+              get BAR
+              write( BAR.NAME )
+              find next BEER within SERVED_IN
+              endwhile
+        find next BEER within DRUNK_BY
+        endwhile
+      find next PERSON within HAS_RESIDENT
+      endwhile
+    find duplicate DORM using ROOM
+    endwhile
+end
+      

@@ -1,0 +1,79 @@
+Here are problems 2 and 3 for assignment #1 for Derron Simon (10/4/93)
+
+Problem #2:
+
+    (a) The systematic-vacuum-agent would perform correctly in an
+	NxM environment.  The agent makes no assumptions based on the
+	relative size of the environment.
+
+    (b) The agent would fail in any non-rectangular polygonal room.
+	The case where an agent is in a room with a narrower far end
+	(the top in the case where and agent goes left to right and
+	moves upward to the end) would result in the agent running
+	into a barrier when it attempted to go up and going back and
+	forth without ever going up.
+
+    (c) In a room with furniture placed against the walls the agent
+	would behave almost like it would in a non-rectangular room.
+	It would run into a chair (or something) placed against the
+	wall and think it had hit the top of the room.  It would then 
+	attempt to return to home and would probably hit a chair or
+	something else and think it got there!
+
+    (d) The agent would go happily along the full x-axis of the room
+	until it was at the height (y-axis) if the furniture, then the
+	room would appear narrower than before (although the agent 
+	doesn't perceive this) and it would completely ignore the 
+	other side of the furniture.
+
+Problem #3:
+
+    (a) Initial state - The initial state is the information the agent
+	has about it's location and the state of the world.  With the
+	initial state the agent can make assumptions about the world
+	and perform actions.  The initial state for an agent in the
+	vacuum world is it starts in the lower left, facing right and
+	the world in 2x2 containing at most 2 pieces of dirt.
+
+	Operators - The operators for agents in the vacuum world are
+	suck, turn left, turn right, forward and shut-off.  Each of
+	these will result in a change in the agent's environment - and
+	therefore a change in the agent's state.
+
+	Goal test - The goal test for an agent in vacuum world is to
+	suck all the dirt in the current room and to continue on to
+	home, the the final goal to be in the home space after sucking
+	all the dirt on the room.
+
+	Path cost - The path cost function of the vacuum world is as
+	follows: it costs 1 point for each action (ie. operator) and
+	100 points is gained for each dirt sucked and 1000 is gained
+	for finishing in the home square within the allotted time.
+
+    (b) The 2 most efficient algorithms for solving the cleaning
+	problem are: depth limited search and iterative deepening.
+	The 4 squares can be thought of as in a tree, with each
+	adjacent square a child of the square it's adjacent to.  This
+	gives a maximum depth of 3, which would be a good limiting 
+	bound for depth limited search.  The depth first search would
+	continue indefinately if there is no method for determining if
+	a node is already visited.
+
+    (c) Using iterative deepening:
+		set maximum depth to 0
+			search 0,0
+			  dirt found so suck
+		set maximum depth to 1
+			search 1,0
+			search 0,1
+		set maximum depth to 2
+			search 1,1
+			  dirt found so suck		
+			search 2,0
+			search 0,2
+		since our world defines only 2 pieces of dirt, we 
+		are done and when we get to the home square we can
+		shut off.
+
+	
+	

@@ -1,0 +1,254 @@
+
+Sample critique
+===============
+
+------------------------------------------------------------------------------
+Review of Russell and Norvig text                    Instructor: Prof. Russell
+
+Chapter 4
+Student: Dilly Gent
+
+
+
+--------------------- TYPOS, GRAMMATICAL ERRORS, ETC. ------------------------
+
+p.1, title:
+
+> Heuristically Informed search
+
+	Should be "Search" not "search" (or "Informed" should be
+	"informed"!).
+
+p.1, para.-2
+
+> If the evaluation function is omniscient than
+
+	Should be "then".
+
+p.2, para.1
+
+> the cheapest path from n to the goal  where h stands for heuristic
+
+	Should be only one space between "goal" and "where".
+
+p.3, para.-2
+
+> The next step is to expand SB, generating SAG
+
+	Should be "generating SBG".
+
+p.10, para.-4
+
+	The last sentence of the paragraph ends abruptly in the
+	middle!
+
+p.13, para.-3
+
+> One never need to back up
+
+	Should be either "One never needs to back up" or "One never
+	need back up".
+
+
+-------------- VISUAL LAYOUT, STYLE OF PARTICULAR PHRASES, ETC. --------------
+
+General point on visual layout:
+
+       Many of the longer italic names in mathematical equations etc look
+       ugly (uneven spacing etc.). Is there some way to fix this?
+
+p.1, para.-2
+
+> function Best-FirstSearch
+
+	Awkward, even though the phrase "best-first search" is used
+	elsewhere; the name of the function should be either
+	"Best-First-Search" or "BestFirstSearch".
+
+p.2, para.1
+
+> it is not perfectly optimal
+
+	Isn't this redundant?  Should be just "optimal".
+
+p.4, last three equations: 
+
+	It would be nice to have them better aligned (say, with all
+	three "=" signs in the same column) rather than just to have
+	each of them individually centered.
+
+p.5, para.-1
+
+> But the only way there could be an infinite number of paths is
+> either (a) there is a node with an infinite branching factor, or (b)
+> there is an infinitely long path.
+
+	Awkward; should probably read: "But the only ways that there
+	could be an infinite number of paths are that (a) there is a
+	node with an infinite branching factor, or (b) there is an
+	infinitely long path."
+
+
+p.6, para.-2
+
+> an infinitely long path formed from repeated application of operator
+> (3)
+
+	Should be "formed by" instead of "formed from"
+
+p.7, Figure 4.7:
+
+	Should have more vertical distance between the two pictures of
+	positions in the 8-puzzle.
+
+p.8, para.-2
+
+> when h_2(n)=14, the real distance to the goal is h * (n) = 18 90% of
+> the time.
+
+	Juxtaposing two numerals that are not part of the same
+	equation is confusing, and there's also a typo (too many
+	spaces in h * (n)).  Should be something more like "when
+	h_2(n) = 14, then 90% of the time the real distance to the
+	goal is h*(n) = 18."
+
+p.10, para.2-3
+
+	Should choose either "hill climbing" or "hill-climbing" (as an
+	adjective; "hill climbing" seems clearly preferable as a noun)
+	and stick to it, rather than varying randomly.
+
+p.10-11:
+
+	Figure 4.9 should not interrupt the text of the pseudocode for
+	Algorithm SMA*, which starts on p.10.  Also, the text for
+	the figure should be given wider margins to make it clearer
+	that it is not part of the main text.  This might also be done
+	for other figures.
+
+p.11, Figure 4.9:
+
+	The shading makes it difficult to read the symbols within the
+	shaded area.
+
+p.13, para.1
+
+	Unclear what "a short along the roads" is.  This may be a
+	British idiom which will be incomprehensible to American
+	readers.
+
+p.13, para.2
+
+	Should probably be "back up" instead of "backup" here.
+
+
+------------------------------- FIGURES --------------------------------------
+
+p.6:
+
+	The same letters (S and G) should not be used to name nodes in
+	both figures on this page, since that confuses the reader who
+	sees references to them in the text.
+
+The chapter badly needs figures showing the progress of each of the
+search algorithms as they solve a given problem. It's very hard to
+picture their behavior from the text.
+
+p.7, Figure 4.6:
+
+	This figure is rather vague. What state space is drawn here?
+        What is the "T=27" referred to in the caption?
+
+Summary section: Maybe a visual chart of some kind of
+classification of search methods might be desirable here (or in
+Section 4.1).
+
+
+------------------------- CONTENT AND OVERALL STYLE --------------------------
+
+Section 4.1:
+
+The pseudocode could be somewhat clearer and less terse.
+
+Section 4.1.1:
+
+It's rather surprising to see it stated that the heuristic function
+takes a node as argument, rather than a state (first paragraph), and
+to see greedy search using a heuristic which can actually have
+different values for different nodes corresponding to the same state,
+namely, the negative of the path length (last paragraph).  I thought
+all information about paths was supposed to be captured in g, and h
+was supposed to depend only on the state.
+
+Section 4.1.4:
+
+"Informal proofs" that aren't really proofs can be very confusing to
+the reader, who never knows just how convincing a given step is
+supposed to be.  If he/she doesn't understand why a step is supposed
+to be valid, is that because his/her understanding of the proof is
+deficient, or because the step really *isn't* valid?  It might be best
+to give a fully rigorous proof, or at least to point out, explicitly,
+exactly what is being assumed without proof and exactly where such
+assumptions are being used.
+
+Pseudocode for A* might be given (or a reference to more detailed
+pseudocode for general best-first search, given on a revised version
+of the first page of the chapter).
+
+It might be best to give a general definition of "monotonic" so that
+the concept is understood by those who have never seen it before,
+rather than just a definition of the term as applied to the problem at
+hand.
+
+Section 4.2:
+
+It might be desirable to give a full-dress example of A* in action
+(maybe a pseudo-trace of a few steps of A* solving an instance of the
+8-puzzle).  This section shows a problem that A* could work on and
+some heuristics that it could use, but doesn't actually show A* in
+action.
+
+The point made in the last sentence (that of two admissible
+heuristics, the one with higher values is better) might be stressed
+more strongly, in view of its importance.
+
+Section 4.3:
+
+These ideas about automatic invention of heuristics are fascinating
+and important, and it might be worthwhile to provide more detail here,
+including examples.  This remains true even if some of this material
+is covered in later chapters.
+
+Sections 4.4.4 and 4.4.5 (and probably 4.5 when completed):
+
+The level of complexity and sophistication goes up sharply in these
+sections and then returns to the previous level in Section 4.6.
+Likewise, the discussion suddenly becomes much more terse, and starts
+to rely heavily on pseudocode.  It might be best to reorder the
+chapter so as to put these sections at the end (perhaps as an appendix
+to the chapter), or even to split them off into a chapter of their own
+and explain their content at greater leisure.
+
+Section 4.6:
+
+The material in the subsections of this section seems so important
+that many of the subsections might deserve to be elevated to the
+status of full sections in their own right, and to be drastically
+lengthened so as to allow the inclusion of more detail.  If 4.4.4,
+4.4.5, and 4.5 are moved into a separate chapter as suggested, then
+space would be made available for this kind of expansion of 4.6.  The
+topics of Sections 4.6.5 and 4.6.6, in particular, would seem to merit
+discussion at much greater length.  (If these topics are already
+discussed at great length elsewhere in the book, then explicit
+cross-references should be included.)
+
+MA* should be explained so as to make the rationale behind SMA*
+clearer.
+
+Section 4.7 (Summary):
+
+More detail might be desirable here, including a full list of all
+search methods discussed.  
+
+
+=============================================================================

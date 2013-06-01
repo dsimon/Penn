@@ -1,0 +1,78 @@
+Script started on Fri Apr 30 12:27:42 1993
+warning: could not update utmp entry
+eniac% datalog
+
+
+Datalog Interpreter.  Version 1.0.
+University of Pennsylvania.  Computer Science Department.
+Written by  : Jose Cogolludo and Gonzalo Isaza.
+Dec. 1992.
+
+Default fieldsize set to 15.
+Default presentation set to TABLES.
+Default moremode is 'on'.
+
+TYPE 'help.' TO REQUEST SOME BASIC INFORMATION. 
+use 'quit.' or 'exit.' to terminate execution.
+
+ >> use bbf.p     "bbf.pro"
+Closed file bbf.pro. 15 lines read.
+ >> bbf(X) :- fip(X).
+ >> bbf(X) :- cfm(X,Y,Z) & bbf(Z) & (bbf      bbf(Y).
+ >> bbf(X)?
+
++---------------+
++---------------+
+|sophie         |
++---------------+
+|annette        |
++---------------+
+|jacque         |
++---------------+
+|paul           |
++---------------+
+|odette         |
++---------------+
+|marc           |
++---------------+
+|odile          |
++---------------+
+|denise         |
++---------------+
+|michael        |
++---------------+
+|serge          |
++---------------+
+Size of solution table is 10.
+ >> algebra bbf.
+  1 : UNION (
+  2 :   PROJECT FIELDS 1 OF (
+  3 :     TABLE fip
+  2 :   )
+  1 : ,
+  2 :   PROJECT FIELDS 1 OF (
+  3 :     JOIN ON '2,1' OF (
+  4 :       JOIN ON '3,1' OF (
+  5 :         TABLE cfm
+  4 :       ,
+  5 :         TABLE bbf
+  4 :       )
+  3 :     ,
+  4 :       TABLE bbf
+  3 :     )
+  2 :   )
+  1 : )
+ >> use "drinkers.pro"
+Closed file drinkers.pro. 37 lines read.
+ >> served(X) :- serves(A,X,B).
+ >> G(X) :- ~served(        likes(X,Y) & ~served(Y).
+ >> G(X)?
+
++---------------+
++---------------+
+Size of solution table is 0.
+ >> quit.
+eniac% exit
+exit
+
+script done on Fri Apr 30 12:31:54 1993

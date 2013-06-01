@@ -1,0 +1,28 @@
+(load "utilities.lisp")
+(load "environment.lisp")
+(load "vacuum.lisp")
+
+(defun table-lookup-agent (name)
+  (make-agent
+   :name name
+   :program
+   (let ((state 1))
+     #'(lambda (percept)
+	 (let ((bump (first percept))
+	       (dirt (second percept))
+	       (home (third percept)))
+	   (case state
+	       (1    (cond (dirt        'suck) 
+		           ((not dirt)  (incf state) 'forward)))
+	       (2    (cond (dirt        'suck)
+			   ((not dirt)  (incf state) '(turn left))))
+	       (3    (incf state) 'forward)
+	       (4    (cond (dirt        'suck)
+			   ((not dirt)  (incf state) '(turn left))))
+	       (5    (incf state) 'forward)
+	       (6    (cond (dirt        'suck)
+			   ((not dirt)  (incf state) '(turn left))))
+	       (7    (cond (dirt        'suck)
+			   ((not dirt)  (incf state) 'forward)))
+               (8    `shut-off)))))))
+

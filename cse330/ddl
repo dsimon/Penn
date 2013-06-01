@@ -1,0 +1,45 @@
+begin
+record name is DORM
+   BUILDING type is string
+   ROOM type is int
+   SINK type is bool
+duplicates are not allowed for ROOM
+end record
+
+record name is PERSON
+   NAME type is string
+   MAJOR type is string
+   AMOUNT type is string
+end record
+
+record name is BEER
+   BEER_NAME type is string
+   SERVING_SIZE type is string
+end record
+
+record name is BAR
+   BAR_NAME type is string
+   COST type is int
+end record
+
+set name is ALL_DORMS
+   owner is SYSTEM
+   member is DORM
+end set
+
+set name is HAS_RESIDENT
+   owner is DORM
+   member is PERSON
+end set
+
+set name is DRUNK_BY
+   owner is BEER
+   member is PERSON
+end set
+
+set name is SERVED_IN
+   owner is BEER
+   member is BAR
+end set
+
+

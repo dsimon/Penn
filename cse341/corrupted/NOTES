@@ -1,0 +1,35 @@
+This is Derron Simon and Doug Bellew's CSE 341 final project (for
+Spring '93).  We worked on it for a while leading up to school, but
+once classes started work seemed to tail off, so I (Derron Simon)
+thought it'd be better to hand this in now to give Duncan a break in
+grading it (although it's probably too late for that now, sorry).
+
+Here are the specifics:
+
+Does do:
+      - implements all of C's control structures (do/while, if/then/else,
+	while, for)
+      - implements all of C's operators (from AND to XOR, the full set!)
+      - function call recursion
+      - commented SPARC assembly output
+      - debugging mode outputs, as well as compiled-in debug directives
+      - correct interfacing with standard C library
+      - two pass compilation (1 pass for parse tree generation and
+	type checking, 1 pass for code generation)
+      - arrays
+      - pointers (both lval and rval handled correctly)
+
+
+Doesn't do:
+      - doesn't correctly handle function headers without a type 
+	(ie. "main(void)" must be "int main(void)")
+      - type checking is minimal
+      - only one function per source file
+      - no peephole optimization (or any optimization for that matter!)
+      - array indexing only works with integers, because by using inline
+	expansion of array indexing -> pointer operations, we ran into a
+	problem where we don't actually know the type of the array variable,
+	so we don't know what to multiply the offset by.  To simplify, we
+	chose to multiply by 4 (the size of INTs and POINTERs).
+      - looping gives spurious results.  To see what we tried to do to
+	get it to work, see if.c (generate_for()).

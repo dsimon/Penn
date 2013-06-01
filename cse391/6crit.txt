@@ -1,0 +1,55 @@
+------------------------------------------------------------------------------
+Review of Russell and Norvig text                    Instructor: Bonnie Webber
+
+Chapter 6 (second version, dated 9/15/93)
+Student: Derron Simon
+
+--------------------- TYPOS, GRAMMATICAL ERRORS, ETC. ------------------------
+
+p.10, para.7
+
+> Ontological commitments have to with what is assumed to exist.
+
+	I think you mean "have to do with"
+
+-------------- VISUAL LAYOUT, STYLE OF PARTICULAR PHRASES, ETC. --------------
+
+p.2, para.-3
+
+> Point 1  It is also possible ...
+
+	Since a point should stand alone, you want to replace it with 
+	"It is possible" .
+
+p.6, para.4
+
+> ... Pluto will shortly arrive in Bucharest ...
+
+	I didn't follow that logic, how would our agent infer that?
+
+------------------------------- FIGURES --------------------------------------
+
+p.7.
+
+>The Language of Thought
+
+	Nice side information.  Pretty interesting!
+
+p.14, figure 6.10
+
+	What is the big agent on the right doing?  Is that something
+	in it's hands?
+
+------------------------------ OVERALL ---------------------------------------
+
+I really liked this chapter.  It was much easier to read than the
+previous chapters.  It seems as if a lot of effore has already been
+put into debugging this chapter - as shown by the scarcity of problems
+I found with it.
+
+
+
+	
+
+
+

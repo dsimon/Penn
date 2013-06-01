@@ -1,0 +1,110 @@
+% CSE 371 Final Writeup
+%
+% Derron Simon
+
+\documentstyle[11pt]{article}
+\begin{document}
+
+
+\centerline{\LARGE \bf 8085 Minimal System Overview}
+\centerline{\Large \bf Locker \#75}
+\centerline{\Large \bf Sam Alcoff \& Derron Simon}
+
+
+\section{System Design}
+
+Our Initial board layout proved to be sufficient for the remainder of the project.  We
+chose a design with the Vcc and GND lines down the center of the board to facilitate easier chip
+powering.  We also chose to put our support circuitry on the front left and locate the 8085
+nearby to make the switches easier to reach and to cut down on the distance from the crystal to
+the 8085's clock input.  At that point we decided to keep all our RAMs and ROMs together on one 
+side, and to keep the UART and 8155 together on the other.
+
+By Lab Assignment 3 we started the actual system design.  Since the 8085 begins execution
+at location 0000H on power-up the 4k ROM was mapped to that address.  The decision was made to break the
+8085's 64k of address space into eight 8k blocks.  This allowed us to use a 74LS383 decoder to
+decode the top 3 address lines into 8 chip select lines.  The lower most line selects the 4k ROM,
+which is socketed to allow upgrade to an 8k ROM.
+
+Since the 8085 uses the lower 8 address lines for both addressing and data, an
+8 bit latch was added to hold the address lines when data is on the bus.  The effect of this was 
+to create a separate address and data bus.
+
+For Lab Assigment 4 we added an 8155 and LED diagnostic display.  This was where we made our 
+first real design decision: whether to use memory mapped I/O or not.  Memory mapped was chosen over
+I/O mapped.  The reason for this is that we considered the I/O routines of the 8085 another possible 
+pitfall and we already had the memory decoding logic in place.  We figured we could spare 8k of addressable
+memory for the benefits it would bring in the ease of writing software.
+
+The 8155's SRAM was simple to install.  Since the 8155 has both a CE and IO/M line, we took
+the high line from the 3-to-8 decoder and connected it to CE, and the A12 line from the 8085 and
+connected it to the IO/M line.  This had the benefit of splitting one 8k segment into two 4k 
+segments, the upper 4k for I/O and the lower 4k from SRAM.
+
+We initially tried to set up the 8155 timer to generate interrupts.  We were going to use
+the 7.5 interrupt of the 8085 since it was the only interrupt with a latched input.  We though we
+could send TIMEROUT to the 7.5 input.  This seemed like a good idea, but we realised we would be
+using the TIMER to generate UART clocking later and the interrupts would just be another thing
+in the way.  We also thought that we might need to generate a refresh cycle or do interrupt driven
+I/O in the final project, so we decided to leave our options open.
+
+When attaching the LED diagnostic display we considered simply tying the output lines of the
+8155 to the pins of the LEDs and have port A control LED \#1 and PORT B control LED \#2.  This was
+scrapped in favor of using only PORT A with two 4-to-8 7-segment decoders on the high and low
+nibbles of PORT A.  This allowed us to leave PORT B free which benefitted us greatly in our final
+project.
+
+In Lab Assigment 5 an 8k SRAM and 8251 UART were added.  Since the 8K SRAM is pin compatible
+with the 8K ROM socket, it was easily installed next to the ROM.  The CS line of the SRAM was mapped
+to the second lowest output of the decoder, thus locating it in the 8k segment above the ROM.  Since
+the SRAM is pin compatible it is possible to remove the SRAM and replace it with a ROM if the need
+arises.
+
+When wiring up the UART we ran into our first real problem.  Initially the C/D line was connected
+directly to the AD0 line, not the buffered address lines.  This caused us to spend many hours trying
+to determine why sometimes we got garbage and other times didn't.  We eventually found the problem
+and fixed it easily.
+
+\section{Final Project Design}
+
+Our 8085 minimal system final project was a sound generator with joystick input.  We had wanted to
+use an LCD display with joystick and make a game, but we asked a day late and all the LCD displays
+were gone.
+
+To make it easier to implement we added another 8155 timer.  This provided 2 more ports for joystick
+input and output to the sound chip.  The sound chip was connected to PORT A of one 8155 and the
+control lines of the sound chip were connected to PORT C of the same 8155.  By interfacing to the
+sound chip through and 8155 we didn't have to worry about interfacing a non-8085 component to
+to 8085 system bus - which served the purpose of isolating sound chip problems from the rest
+of the minimal system.
+
+The sound chip worked very straightforwardly.  We didn't have to design any amplification cirvuits
+because we used RCA inputs on Sam's portable stereo, so all that was required was to connect the
+chip to the ports and the output to an 1/8'' plug from Radio Shack.
+
+The A/D converter we found in the stock room didn't work.  This proved a very big problem.  We 
+couldn't finish the lab on time because the stockroom didn't have any replacement A/D converters.
+That Sunday, 1 day late, Sam's dad brought us a single A/D converter.  We hooked up the converter
+to read the input of an Apple II joystick (0 to 5 volts).
+
+Upon testing the joystick we found that Apple Joystick didn't have the variable potentiometer
+set up correctly.  We had to add a ground to one side of the potentionmeter to get a +5v to 0v
+range of outputs. 
+
+Since the A/D converter we found didn't have multiplexed input, we could only hook up the Y-axis
+of the joystick.
+
+\section{Final Project Usage}
+
+Our final project had a menu with options to manually test all of the components and a ``go'' option
+which looped continuously taking input from the A/D converter (ie.\ joystick) and changing the tone
+of the sound output to match the 8 bit input of the A/D.
+
+\end{document}
+
+
+
+
+
+
+

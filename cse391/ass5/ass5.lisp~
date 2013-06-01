@@ -1,0 +1,37 @@
+(use-package 'plan-utils)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;  This file contains a description and some test cases for
+;;;  the blocks world domain.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun blocks-world-domain ()
+  ;; purge old domain prior to defining a new domain
+  (reset-domain)
+
+  ;; Define step for putting a block on the table.  
+  (defstep :action '(newtower ?x) 
+    :precond '((on ?X ?Z) (clear ?X)) 
+    :add '((on ?X Table) (clear ?Z)) :dele'((on ?X ?Z)) 
+    :equals '((not (?X ?Z)) (not (?X Table)) (not (?Z Table))))
+
+  ;; Define step for placing one block on another.
+  (defstep :action '(puton ?X ?Y)
+    :precond '((on ?X ?Z) (clear ?X) (clear ?Y))
+    :add   '((on ?X ?Y) (clear ?Z))
+    :dele  '((on ?X ?Z) (clear ?Y))
+    :equals '((not (?X ?Y)) (not (?X ?Z)) (not (?Y ?Z))
+	      (not (?X Table)) (not (?Y Table)))))
+
+(defun easy-stack ()
+  (blocks-world-domain)
+  (snlp:plan '((on C A) (on A Table) (on B Table) (clear C) (clear B))
+	     '((on C B) (on A C))
+      ))
+
+(defun sussman-anomaly ()
+  (blocks-world-domain)
+  (snlp:plan '((on C A) (on A Table) (on B Table) (clear C) (clear B))
+	     '((on A B) (on B C))
+   ))
+

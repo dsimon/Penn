@@ -1,0 +1,11 @@
+flight(philadelphia,new_york).
+flight(new_york,philadelphia).
+flight(new_york,chicago).
+flight(chicago,new_orleans).
+flight(new_york,los_angeles).
+flight(new_york,san_francisco).
+flight(san_francisco,new_york).
+flight(san_francisco,los_angeles).
+flight(new_york,washington).
+flight(washington,boston).
+flight(boston,new_york).

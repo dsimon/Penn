@@ -1,0 +1,47 @@
+C-Prolog version 1.5
+| ?- [part2].
+part2 consulted 2200 bytes 0.0333333 sec.
+
+yes
+| ?- subpart(half_round_file, X).
+
+X = handle ;
+
+X = grooves ;
+
+X = handle ;
+
+X = grooves ;
+
+no
+| ?- fact(use_file(envelope)).
+
+no
+| ?- fact(use_file(coke)).
+
+no
+| ?- fact(use_file(picture)).
+
+no
+| ?- fact(use_file(X)).
+
+X = window_pane ;
+
+no
+| ?- fit_glove_compartment(file).
+
+yes
+| ?- fit_glove_compartment(X).
+
+X = atlas ;
+
+X = file ;
+
+X = hammer ;
+
+no
+| ?- halt.
+
+[ Prolog execution halted ]
+
+Process prolog finished

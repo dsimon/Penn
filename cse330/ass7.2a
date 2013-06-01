@@ -1,0 +1,14 @@
+include ddl
+
+begin
+  store "data"
+  find first DORM within ALL_DORMS
+  while ( db_status = 0 ) do
+    get DORM
+    write(DORM.BUILDING, DORM.ROOM)
+    find next DORM within ALL_DORMS
+    endwhile
+end
+
+
+

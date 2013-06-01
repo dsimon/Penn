@@ -1,0 +1,79 @@
+NAME dtack;
+DEVICE p22v10;
+
+
+/* FINAL COPY - Derron Simon - 4/12/94 */
+
+/* Inputs */
+
+PIN 1 = CLK;
+PIN 2 = !AS;
+PIN 3 = A16;
+PIN 4 = A17;
+PIN 5 = A18;
+PIN 6 = !DTACK_IN;
+PIN 13 = !POR;
+
+/* Outputs */
+
+PIN 14 = !DTACK;
+PIN 15 = !ROM_CS;
+PIN 16 = !RAM1_CS;
+PIN 17 = !RAM2_CS;
+PIN 18 = !AUX1_CS;
+PIN 19 = !AUX2_CS;
+PIN 20 = !OUR_DTACK;
+PIN 21 = A;
+PIN 22 = B;
+PIN 23 = C;
+ 
+FIELD count_dtack = [C,B,A];
+
+count_dtack.ar = POR;
+count_dtack.sp = 'b'0;
+
+$define zero   'b'000
+$define one    'b'001
+$define two    'b'010
+$define three  'b'011
+$define four   'b'100
+$define five   'b'101
+$define six    'b'110
+$define seven  'b'111
+
+DTACK = (DTACK_IN # OUR_DTACK);
+
+ROM_CS = (!A16 & !A17 & !A18);
+RAM1_CS = (A16 & !A17 & !A18);
+RAM2_CS = (!A16 & A17 & !A18);
+AUX1_CS = (A16 & A17 & !A18);
+AUX2_CS = (!A16 & !A17 & A18);
+
+sequence count_dtack {
+present zero    if (ROM_CS & AS) next one;
+		    if (RAM1_CS & AS) next one;
+	  	    if (AUX2_CS & AS) next one;
+		    default next zero;
+
+present one	if (DTACK_IN) next zero;
+	  	    default next two;
+
+present two	if (DTACK_IN) next zero;
+	  	    default next three;
+
+present three   if (DTACK_IN) next zero;
+	  	    default next four;
+
+present four    if (DTACK_IN) next zero;
+	  	    default next five;
+
+present five    if (DTACK_IN) next zero;
+	  	    default next six;
+
+present six	if (DTACK_IN) next zero;
+	  	    default next seven;
+
+present seven   out OUR_DTACK;
+	  	    default next zero;
+}
+

@@ -1,0 +1,41 @@
+NAME lance;
+DEVICE p22v10;
+FORMAT j;
+
+PIN 1 = CLOCK;
+PIN 2 = A0;
+PIN 3 = !CS;
+PIN 4 = !BGACK;
+PIN 5 = !BG;
+PIN 8 = !READ;
+PIN 9 = RW;
+PIN 10 = !AS;
+PIN 11 = !HOLD;
+
+PIN 14 = !RB;
+PIN 15 = !TB;
+PIN 16 = BR;
+PIN 17 = !CLR1;
+PIN 18 = !CLR2;
+PIN 19 = BYTE;
+PIN 20 = !UDS;
+PIN 21 = !LDS;
+PIN 22 = !DAS;
+
+/*** CODE ***/
+
+RB.OE = !BGACK;
+TB.OE = !BGACK;
+UDS.OE = BGACK;
+LDS.OE = BGACK;
+DAS.OE = !BGACK;
+
+RB = (!CS & RW & UDS) # (!CS & RW & LDS);    	/* 68000 master */
+TB = (!CS & !RW);			  	    		/* 68000 master */
+UDS = (DAS & !A0 & BYTE) # (!BYTE & DAS);
+LDS = (DAS & A0 & BYTE) # (!BYTE & DAS);
+DAS = UDS & LDS;			  	    		/* 68000 master */
+
+CLR1 = !AS & BG;
+CLR2 = BGACK;
+!BR = !HOLD;

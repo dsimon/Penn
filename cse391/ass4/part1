@@ -1,0 +1,47 @@
+% CSE 391 Assignment #4
+% Derron Simon
+
+% Part I - 1
+
+sumNodes([],S) :- S is 0.
+sumNodes(bt(X,Y),S) :- sumNodes(X,A), sumNodes(Y,B), S is A + B.
+sumNodes(X,S) :- S is X.
+
+% Part I - 2
+
+means(0, nichts).
+means(1, ein).
+means(2, zwei).
+means(3, drei).
+means(4, veir).
+means(5, funf).
+means(6, sechs).
+means(7, sieben).
+means(8, acht).
+means(9, neun).
+means(10, zehn).
+means(11, elf).
+means(12, zwolf).
+means(13, dreizehn).
+means(14, vierzehn).
+means(15, funfzehn).
+means(16, sechzehn).
+means(17, siebzehn).
+means(18, achtzehn).
+means(19, neunzehn).
+means(20, zwanzig).
+
+translate([],[]).
+translate([H|T],[H1|T1]) :- means(H,H1), translate(T,T1).
+
+% Part I - 3
+
+student(grafton,corbett,dob(13,october,1971),1994).
+student(ken,wulff,dob(32,february,1971),1995).
+student(carol,castasus,dob(1,march,1945),1993).
+student(wendy,simmons,dob(1,november,1912),1995).
+student(derron,simon,dob(22,october,1965),1995).
+
+junior(X,Y) :- student(X,Y,dob(A,B,C),1995).
+old_junior(X,Y) :- student(X,Y,dob(A,B,C),1995), C < 1968.
+

@@ -1,0 +1,100 @@
+------------------------------------------------------------------------------
+Review of Russell and Norvig text                    Instructor: Bonnie Webber
+
+Chapter 4
+Student: Derron Simon
+
+
+
+--------------------- TYPOS, GRAMMATICAL ERRORS, ETC. ------------------------
+
+p.1, byline:
+
+> Search More Directly to the Goal.
+
+	Should probably be something like 'toward' instead of 'to'
+
+p.4, para.4
+
+> The behaviour of A* search 
+
+	British spelling of behaviour (I looked it up in noah)
+
+p.4, para.-2
+
+> is straightforwrd to
+
+	You mean "is straight forward to"
+
+p.5, para.1
+
+> more narrowly focussed around
+
+	focussed is the less common spelling of focused
+
+p.5, para.-1
+
+> it must eventually expand reach a goal state
+
+	perhaps you meant "expand to reach a goal state" or just
+	"reach a goal state"
+
+p.6, para.-2
+
+> will occur uness the
+
+	"unless"
+
+p.8, para.4
+
+> node in question. because the
+
+	I don't know what you mean here!
+
+p.8, para.-4
+
+> say exactly whatthe contribution
+
+	put a space between "what" and "the"
+
+p.9, para.3
+
+> three times alongany
+
+	put a space between "along" and "any"
+
+
+-------------- VISUAL LAYOUT, STYLE OF PARTICULAR PHRASES, ETC. --------------
+
+p.5, para.-3
+
+> (there must be some such node, unless the path has been completely
+> expanded in which case the algorithm would have returned G)
+
+	Run on sentence.  The "in which case" should be made into
+	another sentence or worded differently (notes in parentheses 
+	do not have to be single sentences.  Take this one, for 
+	instance :-)
+
+p.6, para.2
+
+	I like the Zeno's paradox stuff, but you may wish to explain
+	why from W to S, h should have been 3 (I understand, but many
+	won't).
+	
+p.9, para.-3
+
+> The unresolved question is whether SMA* is optimally efficient among
+> all algorithms given the same heuristic information and the same
+> memory allocation.
+
+   	Call me dumb, but I'm confused as what the question is
+	actually about.  I guess optimally efficient doesn't explain 
+	enough here for me.
+
+p.12, para.-2
+
+> but in most problems the operators are not predictable, as discussed
+
+	Should be "the effects of the operators are not"...
+

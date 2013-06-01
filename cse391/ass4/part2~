@@ -1,0 +1,116 @@
+% This implements the hierarchical structure of the diagram we had in
+% our in-class assignment #3. 
+%
+% This is the Part II code for Derron Simon and Brian Simmons
+%
+
+% tool classification
+
+isa(metal_working_tool,tool).
+isa(word_working_tool,tool).
+isa(smoothing_tool,metal_working_tool).
+isa(smoothing_tool,wood_working_tool).
+isa(file,smoothing_tool).
+isa(curve_smoothing_file,file).
+isa(flat_smoothing_file,file).
+isa(half_round_file,curve_smoothing_file).
+isa(half_round_file,flat_smoothing_file).
+
+% used by fit_glove_compartment relation
+
+smaller(file, hammer).
+smaller(hammer, atlas).
+smaller(hammer, anvil).
+smaller(atlas, glove_compartment).
+smaller(glove_compartment, anvil).
+
+subpart(file, handle).
+subpart(file, grooves).
+subpart(X,Y) :- isa(X,Z), subpart(Z,Y). 
+
+use(file, smoothing).
+use(curve_smoothing_file, curve_smoothing).
+use(flat_smoothing_file, flat_smoothing).
+
+goes_with(metal_working_tool, metal).
+goes_with(wood_working_tool, wood).
+
+fact(Fact) :-
+   call(Fact), !.
+
+fact(Fact) :-
+   Fact =.. [Rel, Arg1, Arg2],
+   isa(Arg1, SuperArg),                 % climb isa hierarchy
+   SuperFact =.. [Rel, SuperArg, Arg2],
+   fact(SuperFact).
+
+rough_surface(window_pane).
+smooth_surface(coke).
+rough_surface(picture).
+smooth_surface(envelope).
+isa(picture, wood).
+isa(window_pane, wood).
+isa(envelope, wood). 			% joke!
+desired(window_pane, smooth).
+desired(coke, open).
+desired(envelope, open).
+desired(picture, hang_up).
+
+use_file(X) :- rough_surface(X), desired(X, smooth).
+use_half_round_file(X) :- use_file(X), isa(X, metal).
+use_half_round_file(X) :- use_file(X), isa(X, wood).
+
+fit_glove_compartment(X) :- smaller(X, glove_compartment).
+fit_glove_compartment(X) :- smaller(X,Y), fit_glove_compartment(Y).
+
+% C-Prolog version 1.5
+% | ?- [part2].
+% part2 consulted 2200 bytes 0.0333333 sec.
+%
+% yes
+% | ?- subpart(half_round_file, X).             % #1
+% 
+% X = handle ;
+%
+% X = grooves ;
+%
+% X = handle ;
+%
+% X = grooves ;
+%
+% no
+% | ?- fact(use_file(envelope)).                % #2
+%
+% no
+% | ?- fact(use_file(coke)).			% #3
+%
+% no
+% | ?- fact(use_file(picture)).			% #4
+%
+% no
+% | ?- fact(use_file(X)).
+%
+% X = window_pane ;
+%
+% no
+% | ?- fit_glove_compartment(file).		% #5
+%
+% yes
+% | ?- fit_glove_compartment(X).
+%
+% X = atlas ;
+%
+% X = file ;
+%
+% X = hammer ;
+%
+% no
+% | ?- halt.
+%
+% [ Prolog execution halted ]
+%
+% Process prolog finished
+
+
+
+

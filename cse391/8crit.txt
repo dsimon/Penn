@@ -1,0 +1,79 @@
+------------------------------------------------------------------------------
+Review of Russell and Norvig text                    Instructor: Bonnie Webber
+
+Chapter 8
+Student: Derron Simon
+
+
+
+--------------------- TYPOS, GRAMMATICAL ERRORS, ETC. ------------------------
+
+p.8, para.4
+
+> estimating labour costs
+
+	British spelling of labor.
+
+-------------- VISUAL LAYOUT, STYLE OF PARTICULAR PHRASES, ETC. --------------
+
+p.1, para.2
+
+> and writes down a formal description
+
+	How about just "writes a formal description"?
+
+p.1, para.2
+
+> we will use examples that should already be fairly familiar
+
+	How about "we will use examples that would already be familiar
+	to a computer engineer" or something along those lines.  It 
+	seems a little presumptuous to assume everyone knows TTL design.
+
+p.1, para.-3
+
+> build on these properties of the language it is written in
+
+	Awkward.
+ 
+p.7, para-3
+
+	You mention Wumpus World, you might want to reference the
+	reader to chapter 6.
+
+p.8, para.1
+
+> taxonomy to help the agent predict behaviour from scanty clues.
+
+	"scanty clues" is quite an unusual phrase, it seems to carry 
+	an odd connotation.
+
+p.8, para.6
+
+> for fruits or monetary instruments
+
+	just being nit-picky, but I'd use monetary units... :>
+
+p.12, para.3
+
+> Generally speaking, instead of saying, as we did in situation
+> calculus, that a given fact is true in a particular situation, we
+> we'll say that a given event occured in a particular interval.
+
+	Awkward sentence (and as you can see from the above
+	formatting, many repeated words!)
+
+p.16, para.2
+
+> For our purposes a fluent is something that flows or changes across
+> situations.  
+
+	You may want more of a definition here.
+
+------------------------------- FIGURES --------------------------------------
+
+p.2 - Knowledge Engineering vs. Programming
+
+	The analogy between "implementing the proof theory" and
+	"choosing or writing a compiler" is a little weak.
+
